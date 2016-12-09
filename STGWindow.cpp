@@ -60,5 +60,5 @@ STGWindow *STGWindow::instance;
 
 void STGWindow::update() {
     instance->game.move_objects();
-    instance->draw();
+    instance->redraw();
 }
