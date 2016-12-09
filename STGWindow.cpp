@@ -1,38 +1,38 @@
 #include "headers.h"
 
 int STGWindow::handle(int event) {
-    switch(event){
+    switch (event) {
         case FL_KEYDOWN:
-            switch(Fl::event_key()){
+            switch (Fl::event_key()) {
                 case FL_Left:
-                    game.Left= true;
+                    game.Left = true;
                     break;
                 case FL_Right:
-                    game.Right=true;
+                    game.Right = true;
                     break;
                 case FL_Up:
-                    game.Up=true;
+                    game.Up = true;
                     break;
                 case FL_Down:
-                    game.Down=true;
+                    game.Down = true;
                     break;
                 default:
                     break;
             }
             break;
         case FL_KEYUP:
-            switch(Fl::event_key()){
+            switch (Fl::event_key()) {
                 case FL_Left:
-                    game.Left= false;
+                    game.Left = false;
                     break;
                 case FL_Right:
-                    game.Right=false;
+                    game.Right = false;
                     break;
                 case FL_Up:
-                    game.Up=false;
+                    game.Up = false;
                     break;
                 case FL_Down:
-                    game.Down=false;
+                    game.Down = false;
                     break;
                 default:
                     break;
@@ -44,15 +44,15 @@ int STGWindow::handle(int event) {
     return 1;
 }
 
-void STGWindow::draw(){
+void STGWindow::draw() {
     canvas.draw_bg();
-    canvas.draw_plane(game.planeX,game.planeY);
-    fl_copy_offscreen(0,0,600,600,canvas.scr,0,0);
+    canvas.draw_plane(game.planeX, game.planeY);
+    fl_copy_offscreen(0, 0, 600, 600, canvas.scr, 0, 0);
 }
 
 STGWindow *STGWindow::instance;
 
-void STGWindow::update(){
+void STGWindow::update() {
     instance->game.move_objects();
     instance->draw();
 }

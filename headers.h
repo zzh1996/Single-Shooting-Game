@@ -7,6 +7,7 @@
 using namespace std;
 
 #define STG_HEADERS_H
+
 #include <iostream>
 #include <FL/Fl.H>
 #include <FL/Fl_Box.H>

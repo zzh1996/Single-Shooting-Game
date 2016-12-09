@@ -3,17 +3,20 @@
 
 #include "headers.h"
 
-class Timer{
+class Timer {
     static Timer *instance;
     double interval;
+
     void (*func)();
-    static void callback(void *){
+
+    static void callback(void *) {
         instance->func();
         Fl::repeat_timeout(instance->interval, callback);
     }
+
 public:
-    Timer(double interval,void (*func)()):interval(interval),func(func){
-        instance=this;
+    Timer(double interval, void (*func)()) : interval(interval), func(func) {
+        instance = this;
         Fl::add_timeout(interval, callback);
     }
 };

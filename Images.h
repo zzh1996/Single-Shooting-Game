@@ -3,7 +3,7 @@
 
 #include "headers.h"
 
-class Images{
+class Images {
 public:
     static Fl_JPEG_Image bg;
     static Fl_PNG_Image plane;
