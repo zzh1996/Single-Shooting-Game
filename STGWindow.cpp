@@ -45,9 +45,15 @@ int STGWindow::handle(int event) {
 }
 
 void STGWindow::draw() {
+#ifndef __linux__
+    fl_begin_offscreen(canvas.scr);
+#endif
     canvas.draw_bg();
     canvas.draw_plane(game.planeX, game.planeY);
+#ifndef __linux__
+    fl_end_offscreen();
     fl_copy_offscreen(0, 0, 600, 600, canvas.scr, 0, 0);
+#endif
 }
 
 STGWindow *STGWindow::instance;

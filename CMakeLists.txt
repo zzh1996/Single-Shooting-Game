@@ -12,6 +12,11 @@ add_executable(STG ${SOURCE_FILES})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
-target_link_libraries(STG "-lfltk -lfltk_images")
+target_link_libraries(STG "-lfltk")
+target_link_libraries(STG "-lfltk_images")
+
+if (UNIX)
+    target_link_libraries(STG "-lX11")
+endif (UNIX)
 
 #set(CMAKE_VERBOSE_MAKEFILE on)
