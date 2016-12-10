@@ -20,7 +20,7 @@ public:
     }
 
     void draw_plane(int x, int y) {
-        Images::plane.draw(x, y);
+        Images::player.draw(x, y);
     }
 };
 

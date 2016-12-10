@@ -11,7 +11,7 @@ class Timer {
 
     static void callback(void *) {
         instance->func();
-        Fl::repeat_timeout(instance->interval, callback);
+        Fl::add_timeout(instance->interval, callback);
     }
 
 public:

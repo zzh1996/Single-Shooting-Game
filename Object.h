@@ -30,7 +30,7 @@ public:
 
 class Plane:public Object{
 public:
-    Plane(int X,int Y):Object(X,Y,Images::plane){}
+    Plane(int X,int Y):Object(X,Y,Images::player){}
 };
 
 class Enemy:public Object{
@@ -49,7 +49,7 @@ public:
         X+=SpeedX;
         Y+=SpeedY;
     }
-    MovingEnemy():Enemy(rand()%600,0,Images::plane1,3,100),SpeedX(rand()%20-10),SpeedY(rand()%5+2){}
+    MovingEnemy():Enemy(rand()%600,0,Images::enemy1,3,100),SpeedX(X<300?rand()%10:-rand()%10),SpeedY(rand()%5+2){}
 };
 
 class Ammo:public Object{
@@ -59,6 +59,45 @@ public:
         fl_color(FL_WHITE);
         fl_pie(X,Y,10,10,0,360);
     }
+};
+
+enum fType{fLife,fWeapon,fAmmo};
+
+class Food:public Object{
+    bool right;
+public:
+    Food(int X,int Y,Fl_Image &i):Object(X,Y,i),right(rand()%2){}
+    virtual ~Food(){}
+    virtual fType get_type()=0;
+    void move(){
+        Y++;
+        if(right)
+            X++;
+        else
+            X--;
+        if(X<100)
+            right=true;
+        if(X>500)
+            right=false;
+    }
+};
+
+class Food_Life:public Food{
+public:
+    Food_Life(int X,int Y):Food(X,Y,Images::life){}
+    fType get_type(){return fLife;}
+};
+
+class Food_Weapon:public Food{
+public:
+    Food_Weapon(int X,int Y):Food(X,Y,Images::weapon){}
+    fType get_type(){return fWeapon;}
+};
+
+class Food_Ammo:public Food{
+public:
+    Food_Ammo(int X,int Y):Food(X,Y,Images::ammo){}
+    fType get_type(){return fAmmo;}
 };
 
 
