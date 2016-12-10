@@ -10,7 +10,7 @@ file(GLOB SOURCE_FILES
 
 add_executable(STG ${SOURCE_FILES} Object.cpp Object.h)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 
 target_link_libraries(STG "-lfltk")
 target_link_libraries(STG "-lfltk_images")

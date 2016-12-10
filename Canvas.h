@@ -9,7 +9,7 @@ public:
 
     Canvas() : scr(
 #ifndef __linux__
-        fl_create_offscreen(600, 600)
+            fl_create_offscreen(600, 600)
 #endif
     ) {}
 

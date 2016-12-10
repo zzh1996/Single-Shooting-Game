@@ -6,7 +6,7 @@
 class Images {
 public:
     static Fl_JPEG_Image bg;
-    static Fl_PNG_Image player,enemy1,life,weapon,ammo;
+    static Fl_PNG_Image player, enemy1, enemy2, enemy3, life, weapon, ammo;
 };
 
 #endif //STG_IMAGES_H

@@ -12,6 +12,7 @@ using namespace std;
 #include <list>
 #include <cstdlib>
 #include <cstdio>
+#include <ctime>
 #include <FL/Fl.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Window.H>
