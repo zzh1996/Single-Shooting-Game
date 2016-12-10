@@ -82,6 +82,10 @@ void Game::update_state() {
         } else if (i->collides(self)) {
             decrease_life();
             i = enemy_ammos.erase(i);
+        } else if (LaserCount && i->X < self.X + self.W && i->X + i->W > self.X) { //laser collides with enemy ammo
+            i = enemy_ammos.erase(i);
+        } else if (WaveCount && i->Y <= WaveCount + 5 && i->Y + i->H >= WaveCount - 5) { //wave collides with enemy ammo
+            i = enemy_ammos.erase(i);
         } else
             i++;
     }
@@ -235,6 +239,7 @@ void Game::decrease_life() {
     if (!InvincibleCount) {
         life--;
         ammo = 1;
+        InvincibleCount = 50;
     }
     if (life == 0) {
         die();

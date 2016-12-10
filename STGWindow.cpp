@@ -5,18 +5,22 @@ int STGWindow::handle(int event) {
         case FL_KEYDOWN:
             switch (Fl::event_key()) {
                 case FL_Left:
+                case 'a':
                     game.Left = true;
                     break;
 
                 case FL_Right:
+                case 'd':
                     game.Right = true;
                     break;
 
                 case FL_Up:
+                case 'w':
                     game.Up = true;
                     break;
 
                 case FL_Down:
+                case 's':
                     game.Down = true;
                     break;
 
@@ -33,14 +37,17 @@ int STGWindow::handle(int event) {
                     break;
 
                 case 'z':
+                case 'j':
                     game.WP1 = true;
                     break;
 
                 case 'x':
+                case 'k':
                     game.WP2 = true;
                     break;
 
                 case 'c':
+                case 'l':
                     game.WP3 = true;
                     break;
 
@@ -52,18 +59,22 @@ int STGWindow::handle(int event) {
         case FL_KEYUP:
             switch (Fl::event_key()) {
                 case FL_Left:
+                case 'a':
                     game.Left = false;
                     break;
 
                 case FL_Right:
+                case 'd':
                     game.Right = false;
                     break;
 
                 case FL_Up:
+                case 'w':
                     game.Up = false;
                     break;
 
                 case FL_Down:
+                case 's':
                     game.Down = false;
                     break;
 
@@ -160,7 +171,7 @@ void STGWindow::draw() {
 
     fl_font(FL_TIMES, 16);
     fl_color(FL_WHITE);
-    fl_draw("Move:Arrows/WASD  Skills:ZXC  Pause:P", 160, 590);
+    fl_draw("Move:Arrows/WASD Skills:ZXC/JKL Pause:P", 160, 590);
 
     if (game.game_over || game.win) { //draw game over or win
         fl_font(FL_TIMES_BOLD, 100);

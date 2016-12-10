@@ -17,6 +17,8 @@ target_link_libraries(STG "-lfltk_images")
 
 if (UNIX)
     target_link_libraries(STG "-lX11")
+else (UNIX)
+    target_link_libraries(STG "-mwindows")
 endif (UNIX)
 
 #set(CMAKE_VERBOSE_MAKEFILE on)
