@@ -16,6 +16,8 @@ int STGWindow::handle(int event) {
                 case FL_Down:
                     game.Down = true;
                     break;
+                case ' ':
+                    game.Space=true;
                 default:
                     break;
             }
@@ -34,6 +36,8 @@ int STGWindow::handle(int event) {
                 case FL_Down:
                     game.Down = false;
                     break;
+                case ' ':
+                    game.Space=false;
                 default:
                     break;
             }
@@ -48,8 +52,24 @@ void STGWindow::draw() {
 #ifndef __linux__
     fl_begin_offscreen(canvas.scr);
 #endif
+    Fl_Window::draw();
     canvas.draw_bg();
-    canvas.draw_plane(game.planeX, game.planeY);
+    for(Ammo &a:game.self_ammos) {
+        a.draw();
+    }
+    for(auto p:game.enemies) {
+        p->draw();
+    }
+    game.self.draw();
+    for(int i=0;i<game.life;i++) {
+        fl_color(FL_RED);
+        fl_pie(10 + 15 * i, 580, 10, 10, 0, 360);
+    }
+    char s[15];
+    sprintf(s,"%06d",game.score);
+    fl_font(FL_COURIER_BOLD,20);
+    fl_color(FL_WHITE);
+    fl_draw(s,10,30);
 #ifndef __linux__
     fl_end_offscreen();
     fl_copy_offscreen(0, 0, 600, 600, canvas.scr, 0, 0);
@@ -59,6 +79,6 @@ void STGWindow::draw() {
 STGWindow *STGWindow::instance;
 
 void STGWindow::update() {
-    instance->game.move_objects();
+    instance->game.update_state();
     instance->redraw();
 }

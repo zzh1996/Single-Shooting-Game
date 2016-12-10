@@ -5,15 +5,24 @@
 
 class Game {
 public:
-    int planeX, planeY;
+    Plane self;
     bool Up = false, Down = false, Left = false, Right = false;
-    int planeSpeed = 5;
+    bool Space = false;
+    int AmmoCoolDown = 3,AmmoCoolDownCount=0;
+    int planeSpeed = 10,AmmoSpeed=15;
+    int life=5;
+    int score=0;
+    list<Ammo> self_ammos,enemy_ammos;
+    list<Enemy*> enemies;
 
-    Game() : planeX(300), planeY(500) {}
+    Game() : self(300,500) {}
 
     ~Game() {}
 
-    void move_objects();
+    void update_state();
+    void shoot();
+    void decrease_life();
+    void gameover();
 };
 
 #endif //STG_GAME_H

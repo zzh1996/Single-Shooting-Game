@@ -9,6 +9,9 @@ using namespace std;
 #define STG_HEADERS_H
 
 #include <iostream>
+#include <list>
+#include <cstdlib>
+#include <cstdio>
 #include <FL/Fl.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Window.H>
@@ -17,6 +20,7 @@ using namespace std;
 #include <FL/Fl_PNG_Image.H>
 #include "Images.h"
 #include "Timer.h"
+#include "Object.h"
 #include "Canvas.h"
 #include "Game.h"
 #include "STGWindow.h"
