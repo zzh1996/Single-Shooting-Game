@@ -22,7 +22,7 @@ public:
     int InvincibleCount;
     int LaserCount;
     int WaveCount;
-    list <Ammo> self_ammos, enemy_ammos;
+    list <Ammo> self_ammos;
     list<Enemy *> enemies;
     list<Food *> foods;
 

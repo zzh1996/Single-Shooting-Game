@@ -18,7 +18,7 @@ public:
         image->draw(X, Y);
     }
 
-    bool collides(Object &o) {
+    bool collides(Object &o) { //whether this collides with another object
         if (X + W < o.X) return false;
         if (o.X + o.W < X) return false;
         if (Y + H < o.Y) return false;
@@ -29,13 +29,9 @@ public:
     bool out_of_screen() {
         return X + W < 0 || X > 600 || Y + H < 0 || Y > 600;
     }
-
-    bool across_screen() {
-        return X < 0 || X + W > 600 || Y < 0 || Y + H > 600;
-    }
 };
 
-class Plane : public Object {
+class Plane : public Object { //player
 public:
     Plane(int X, int Y) : Object(X, Y, Images::player) {}
 };
