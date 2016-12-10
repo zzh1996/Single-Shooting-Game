@@ -114,6 +114,10 @@ void STGWindow::draw() {
         a.draw();
     }
 
+    for (EnemyAmmo &a:game.enemy_ammos) { //draw ammos
+        a.draw();
+    }
+
     for (auto p:game.enemies) { //draw enemies
         p->draw();
     }
@@ -153,6 +157,10 @@ void STGWindow::draw() {
     fl_font(FL_COURIER_BOLD, 20);
     fl_color(FL_WHITE);
     fl_draw(s, 10, 30);
+
+    fl_font(FL_TIMES, 16);
+    fl_color(FL_WHITE);
+    fl_draw("Move:Arrows/WASD  Skills:ZXC  Pause:P", 160, 590);
 
     if (game.game_over || game.win) { //draw game over or win
         fl_font(FL_TIMES_BOLD, 100);

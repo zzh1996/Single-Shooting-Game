@@ -75,6 +75,17 @@ void Game::update_state() {
             i++;
     }
 
+    for (auto i = enemy_ammos.begin(); i != enemy_ammos.end();) {
+        i->move();
+        if (i->out_of_screen()) {
+            i = enemy_ammos.erase(i);
+        } else if (i->collides(self)) {
+            decrease_life();
+            i = enemy_ammos.erase(i);
+        } else
+            i++;
+    }
+
     //update enemies
     for (auto i = enemies.begin(); i != enemies.end();) {
         Enemy *e = *i;
@@ -172,14 +183,28 @@ void Game::update_state() {
         case 2: //enemy2
             if (stagecount <= 0) {
                 stage = 3;
-                enemies.push_back(new BossEnemy());
+                boss = new BossEnemy();
+                enemies.push_back(boss);
             }
-            if (rand() % 100 < 5)
+            if (rand() % 100 < 5) {
                 enemies.push_back(new RushingEnemy());
+            }
             break;
         case 3: //boss
             if (enemies.empty()) {
                 win = true;
+            }
+            if (rand() % 100 < 2) {
+                enemy_ammos.push_back(EnemyAmmo(boss->X + boss->W / 2, boss->Y + boss->H, 0, EnemyAmmoSpeed));
+                enemy_ammos.push_back(
+                        EnemyAmmo(boss->X + boss->W / 2, boss->Y + boss->H, EnemyAmmoSpeed, EnemyAmmoSpeed));
+                enemy_ammos.push_back(
+                        EnemyAmmo(boss->X + boss->W / 2, boss->Y + boss->H, -EnemyAmmoSpeed, EnemyAmmoSpeed));
+            }
+            if (rand() % 100 < 3) {
+                enemy_ammos.push_back(EnemyAmmo(boss->X, boss->Y + boss->H, 0, EnemyAmmoSpeed));
+                enemy_ammos.push_back(EnemyAmmo(boss->X + boss->W / 2, boss->Y + boss->H, 0, EnemyAmmoSpeed));
+                enemy_ammos.push_back(EnemyAmmo(boss->X + boss->W, boss->Y + boss->H, 0, EnemyAmmoSpeed));
             }
             break;
         default:
@@ -234,6 +259,7 @@ void Game::reset() {
     stage = 0;
     stagecount = 0;
     self_ammos.clear();
+    enemy_ammos.clear();
     while (!enemies.empty()) { //clear enemies
         delete enemies.front();
         enemies.pop_front();

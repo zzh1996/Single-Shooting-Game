@@ -14,7 +14,7 @@ public:
     bool Space = false, Enter = false, PAUSE = false;
     bool WP1 = false, WP2 = false, WP3 = false;
     int AmmoCoolDownCount;
-    const int planeSpeed = 10, AmmoSpeed = 15, AmmoCoolDown = 3;
+    const int planeSpeed = 10, AmmoSpeed = 15, AmmoCoolDown = 3, EnemyAmmoSpeed = 10;
     int life;
     int score;
     int weapon;
@@ -23,8 +23,10 @@ public:
     int LaserCount;
     int WaveCount;
     list <Ammo> self_ammos;
+    list <EnemyAmmo> enemy_ammos;
     list<Enemy *> enemies;
     list<Food *> foods;
+    Enemy *boss;
 
     Game() : self(0, 0) { reset(); }
 

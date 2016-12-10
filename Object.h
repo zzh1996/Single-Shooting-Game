@@ -85,7 +85,7 @@ public:
             right = false;
     }
 
-    BossEnemy() : Enemy(200, 100, Images::enemy3, 200, 20), right(true) {}
+    BossEnemy() : Enemy(200, 100, Images::enemy3, 400, 20), right(true) {}
 };
 
 class Ammo : public Object {
@@ -95,6 +95,22 @@ public:
     void draw() {
         fl_color(FL_WHITE);
         fl_pie(X, Y, 10, 10, 0, 360);
+    }
+};
+
+class EnemyAmmo : public Object {
+    int speedX, speedY;
+public:
+    EnemyAmmo(int X, int Y, int speedX, int speedY) : Object(X, Y, 10, 10), speedX(speedX), speedY(speedY) {}
+
+    void draw() {
+        fl_color(FL_YELLOW);
+        fl_pie(X, Y, 10, 10, 0, 360);
+    }
+
+    void move() {
+        X += speedX;
+        Y += speedY;
     }
 };
 

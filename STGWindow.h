@@ -16,7 +16,7 @@ class STGWindow : public Fl_Window {
     static void update();
 
 public:
-    STGWindow() : Fl_Window(600, 600, "Single Shooting Game"), timer(0.02, update) {
+    STGWindow() : Fl_Window(600, 600, "Single Shooting Game V1.0 Author:zzh1996"), timer(0.02, update) {
         instance = this;
     }
 
