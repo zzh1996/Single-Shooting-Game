@@ -8,7 +8,7 @@ file(GLOB SOURCE_FILES
         "*.cpp"
         )
 
-add_executable(STG ${SOURCE_FILES} Object.cpp Object.h)
+add_executable(STG ${SOURCE_FILES})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 

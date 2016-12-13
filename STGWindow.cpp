@@ -125,7 +125,7 @@ void STGWindow::draw() {
         a.draw();
     }
 
-    for (EnemyAmmo &a:game.enemy_ammos) { //draw ammos
+    for (EnemyAmmo &a:game.enemy_ammos) { //draw enemy ammos
         a.draw();
     }
 
@@ -181,7 +181,7 @@ void STGWindow::draw() {
         else
             fl_draw(" You win!!", 50, 300);
         fl_font(FL_TIMES, 30);
-        fl_color(FL_WHITE);
+        fl_color(FL_DARK_YELLOW);
         fl_draw("Press Enter to restart", 175, 400);
     }
 
